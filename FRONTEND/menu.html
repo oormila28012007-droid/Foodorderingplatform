@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Foodo - Food Menu</title>
+
+    <link rel="stylesheet" href="menu.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🍴 Foodo.
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html" class="active">Menu</a>
+            <a href="#">Restaurants</a>
+            <a href="#">Offers</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="nav-right">
+
+            <button class="search-btn">
+                🔍
+            </button>
+
+            <button
+                class="cart-btn"
+                onclick="goToCart()">
+
+                🛒
+                <span id="cartCount">0</span>
+
+            </button>
+
+            <button
+                class="login-btn"
+                onclick="goToLogin()">
+
+                Login
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="menu-header">
+
+        <div>
+
+            <p class="small-title">
+                🍽️ OUR MENU
+            </p>
+
+            <h1>
+                What are you craving?
+            </h1>
+
+            <p>
+                Choose from our delicious collection
+                of food and order your favorite meal.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <span>🔍</span>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for food..."
+                onkeyup="searchFood()">
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="categories">
+
+        <button
+            class="category active"
+            onclick="filterFood('all', this)">
+            🍽️ All
+        </button>
+
+        <button
+            class="category"
+            onclick="filterFood('pizza', this)">
+            🍕 Pizza
+        </button>
+
+        <button
+            class="category"
+            onclick="filterFood('burger', this)">
+            🍔 Burgers
+        </button>
+
+        <button
+            class="category"
+            onclick="filterFood('biryani', this)">
+            🍛 Biryani
+        </button>
+
+        <button
+            class="category"
+            onclick="filterFood('chicken', this)">
+            🍗 Chicken
+        </button>
+
+        <button
+            class="category"
+            onclick="filterFood('noodles', this)">
+            🍜 Noodles
+        </button>
+
+        <button
+            class="category"
+            onclick="filterFood('dessert', this)">
+            🍰 Desserts
+        </button>
+
+        <button
+            class="category"
+            onclick="filterFood('drink', this)">
+            🥤 Drinks
+        </button>
+
+    </section>
+
+
+    <!-- FOOD SECTION -->
+
+    <main class="food-section">
+
+        <div class="section-title">
+
+            <h2>Popular Food</h2>
+
+            <span id="foodResult">
+                8 items
+            </span>
+
+        </div>
+
+
+        <div class="food-grid" id="foodGrid">
+
+
+            <!-- FOOD 1 -->
+
+            <div
+                class="food-card"
+                data-category="pizza"
+                data-name="Margherita Pizza">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80"
+                        alt="Margherita Pizza">
+
+                    <span class="discount">
+                        20% OFF
+                    </span>
+
+                    <button class="favorite">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="food-details">
+
+                    <div class="rating">
+                        ⭐ 4.8
+                    </div>
+
+                    <h3>
+                        Margherita Pizza
+                    </h3>
+
+                    <p>
+                        Fresh tomato, mozzarella & basil
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹249</strong>
+
+                        <button
+                            onclick="addToCart('Margherita Pizza', 249)">
+                            + Add
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 2 -->
+
+            <div
+                class="food-card"
+                data-category="burger"
+                data-name="Classic Burger">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+                        alt="Classic Burger">
+
+                    <span class="discount">
+                        15% OFF
+                    </span>
+
+                    <button class="favorite">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="food-details">
+
+                    <div class="rating">
+                        ⭐ 4.7
+                    </div>
+
+                    <h3>
+                        Classic Burger
+                    </h3>
+
+                    <p>
+                        Crispy patty, cheese & fresh vegetables
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹179</strong>
+
+                        <button
+                            onclick="addToCart('Classic Burger', 179)">
+                            + Add
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 3 -->
+
+            <div
+                class="food-card"
+                data-category="biryani"
+                data-name="Chicken Biryani">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80"
+                        alt="Chicken Biryani">
+
+                    <span class="discount">
+                        10% OFF
+                    </span>
+
+                    <button class="favorite">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="food-details">
+
+                    <div class="rating">
+                        ⭐ 4.9
+                    </div>
+
+                    <h3>
+                        Chicken Biryani
+                    </h3>
+
+                    <p>
+                        Aromatic basmati rice & tender chicken
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹229</strong>
+
+                        <button
+                            onclick="addToCart('Chicken Biryani', 229)">
+                            + Add
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 4 -->
+
+            <div
+                class="food-card"
+                data-category="chicken"
+                data-name="Grilled Chicken">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=600&q=80"
+                        alt="Grilled Chicken">
+
+                    <span class="discount">
+                        15% OFF
+                    </span>
+
+                    <button class="favorite">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="food-details">
+
+                    <div class="rating">
+                        ⭐ 4.6
+                    </div>
+
+                    <h3>
+                        Grilled Chicken
+                    </h3>
+
+                    <p>
+                        Juicy grilled chicken with fresh herbs
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹299</strong>
+
+                        <button
+                            onclick="addToCart('Grilled Chicken', 299)">
+                            + Add
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 5 -->
+
+            <div
+                class="food-card"
+                data-category="noodles"
+                data-name="Veg Noodles">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
+                        alt="Veg Noodles">
+
+                    <span class="discount">
+                        10% OFF
+                    </span>
+
+                    <button class="favorite">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="food-details">
+
+                    <div class="rating">
+                        ⭐ 4.5
+                    </div>
+
+                    <h3>
+                        Veg Noodles
+                    </h3>
+
+                    <p>
+                        Stir-fried noodles with fresh vegetables
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹159</strong>
+
+                        <button
+                            onclick="addToCart('Veg Noodles', 159)">
+                            + Add
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 6 -->
+
+            <div
+                class="food-card"
+                data-category="pizza"
+                data-name="Farmhouse Pizza">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80"
+                        alt="Farmhouse Pizza">
+
+                    <span class="discount">
+                        25% OFF
+                    </span>
+
+                    <button class="favorite">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="food-details">
+
+                    <div class="rating">
+                        ⭐ 4.8
+                    </div>
+
+                    <h3>
+                        Farmhouse Pizza
+                    </h3>
+
+                    <p>
+                        Loaded with fresh vegetables & cheese
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹299</strong>
+
+                        <button
+                            onclick="addToCart('Farmhouse Pizza', 299)">
+                            + Add
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 7 -->
+
+            <div
+                class="food-card"
+                data-category="dessert"
+                data-name="Chocolate Cake">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
+                        alt="Chocolate Cake">
+
+                    <span class="discount">
+                        10% OFF
+                    </span>
+
+                    <button class="favorite">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="food-details">
+
+                    <div class="rating">
+                        ⭐ 4.9
+                    </div>
+
+                    <h3>
+                        Chocolate Cake
+                    </h3>
+
+                    <p>
+                        Soft chocolate cake with creamy frosting
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹149</strong>
+
+                        <button
+                            onclick="addToCart('Chocolate Cake', 149)">
+                            + Add
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 8 -->
+
+            <div
+                class="food-card"
+                data-category="drink"
+                data-name="Fresh Mango Shake">
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&q=80"
+                        alt="Mango Shake">
+
+                    <span class="discount">
+                        20% OFF
+                    </span>
+
+                    <button class="favorite">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="food-details">
+
+                    <div class="rating">
+                        ⭐ 4.7
+                    </div>
+
+                    <h3>
+                        Fresh Mango Shake
+                    </h3>
+
+                    <p>
+                        Creamy fresh mango milkshake
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹129</strong>
+
+                        <button
+                            onclick="addToCart('Fresh Mango Shake', 129)">
+                            + Add
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NO RESULT -->
+
+        <div
+            id="noResult"
+            class="no-result">
+
+            😔 No food found.
+
+        </div>
+
+    </main>
+
+
+    <!-- CART FLOATING BUTTON -->
+
+    <button
+        class="floating-cart"
+        onclick="goToCart()">
+
+        🛒
+
+        <span id="floatingCartCount">
+            0
+        </span>
+
+    </button>
+
+
+    <script src="menu.js"></script>
+
+</body>
+
+</html>
