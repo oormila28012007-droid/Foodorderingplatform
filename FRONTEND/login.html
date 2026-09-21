@@ -1,177 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering - Login</title>
 
-    <title>Foodo - Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
 
-    <link rel="stylesheet" href="login.css">
+        body {
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            width: 400px;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #ff6347;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 18px;
+            border: none;
+            border-radius: 8px;
+            background: #ff6347;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e6533b;
+        }
+
+        button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .requirements {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #ff6347;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .otp-section {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff5ef;
+            border-radius: 10px;
+        }
+
+        .otp-section button {
+            font-size: 14px;
+            padding: 11px;
+        }
+
+        .otp-message {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="login-container">
+<div class="login-box">
 
-        <!-- LEFT SIDE -->
+    <h1>🍴 Foodie</h1>
 
-        <div class="login-left">
+    <p class="subtitle">Enter your details to continue</p>
 
-            <div class="brand">
-                🍴 Foodo.
-            </div>
+    <form id="loginForm">
 
-            <div class="welcome">
+        <label for="email">Email Address</label>
 
-                <h1>Welcome Back! 👋</h1>
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+        >
 
-                <p>
-                    Login to order your favorite food
-                    and enjoy fast delivery.
-                </p>
+        <div class="otp-section">
 
-                <div class="features">
+            <button type="button" id="sendOtpButton" onclick="sendOTP()">
+                📩 Send OTP
+            </button>
 
-                    <div>
-                        🚴
-                        <span>Fast Delivery</span>
-                    </div>
+            <label for="otp">Enter OTP</label>
 
-                    <div>
-                        🍕
-                        <span>Delicious Food</span>
-                    </div>
+            <input
+                type="text"
+                id="otp"
+                placeholder="Enter 6-digit OTP"
+                maxlength="6"
+            >
 
-                    <div>
-                        🔒
-                        <span>Secure & Safe</span>
-                    </div>
+            <button type="button" onclick="verifyOTP()">
+                🔐 Verify OTP
+            </button>
 
-                </div>
-
-            </div>
+            <div class="otp-message" id="otpMessage"></div>
 
         </div>
 
+        <label for="password">Password</label>
 
-        <!-- RIGHT SIDE -->
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+        >
 
-        <div class="login-right">
+        <label for="role">Login As</label>
 
-            <div class="login-box">
+        <select id="role">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
 
-                <h2>Login</h2>
-
-                <p class="subtitle">
-                    Enter your details to continue
-                </p>
-
-
-                <form id="loginForm">
-
-                    <!-- EMAIL -->
-
-                    <label>Email Address</label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        required
-                    >
-
-
-                    <!-- PASSWORD -->
-
-                    <label>Password</label>
-
-                    <div class="password-box">
-
-                        <input
-                            type="password"
-                            id="passwordInput"
-                            placeholder="Enter your password"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            id="showPassword">
-                            👁
-                        </bu
-                        
-                        ton>
-
-                    </div>
-
-
-                    <div class="options">
-
-                        <label class="remember">
-                            <input type="checkbox">
-                            Remember me
-                        </label>
-
-                        <a href="#">
-                            Forgot Password?
-                        </a>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="login-submit">
-                        Login
-                    </button>
-
-                </form>
-
-
-                <div class="divider">
-                    <span>or continue with</span>
-                </div>
-
-
-                <div class="social-login">
-
-                    <button>
-                        Google
-                    </button>
-
-                    <button>
-                        Facebook
-                    </button>
-
-                </div>
-
-
-                <p class="register-text">
-
-                    Don't have an account?
-
-                    <a href="register.html">
-                        Create Account
-                    </a>
-
-                </p>
-
-
-                <a href="index.html" class="home-link">
-                    ← Back to Home
-                </a>
-
-            </div>
-
+        <div class="requirements">
+            Password must contain:
+            <br>✓ First letter must be Capital
+            <br>✓ At least one Number
+            <br>✓ At least one Special Character
         </div>
 
+        <button type="submit" id="loginButton">
+            Login
+        </button>
+
+        <div class="message" id="message"></div>
+
+    </form>
+
+    <div class="register-link">
+        Don't have an account?
+        <a href="register.html">Create Account</a>
     </div>
 
+</div>
 
-    <script src="login.js"></script>
+<script>
+
+let otpVerified = false;
+let verifiedEmail = "";
+
+// ==================== SEND OTP ====================
+
+async function sendOTP() {
+
+    const email = document.getElementById("email").value.trim();
+    const otpMessage = document.getElementById("otpMessage");
+    const sendButton = document.getElementById("sendOtpButton");
+
+    if (!email) {
+
+        otpMessage.style.color = "red";
+        otpMessage.textContent = "Please enter your email.";
+
+        return;
+    }
+
+    sendButton.disabled = true;
+    sendButton.textContent = "Sending OTP...";
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/send-otp",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email: email
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+
+            otpMessage.style.color = "green";
+            otpMessage.textContent =
+                "OTP sent to your email.";
+
+        } else {
+
+            otpMessage.style.color = "red";
+            otpMessage.textContent =
+                data.message || "Failed to send OTP.";
+
+        }
+
+    } catch (error) {
+
+        console.error("Send OTP Error:", error);
+
+        otpMessage.style.color = "red";
+        otpMessage.textContent =
+            "Unable to connect to backend.";
+
+    }
+
+    sendButton.disabled = false;
+    sendButton.textContent = "📩 Send OTP";
+
+}
+
+// ==================== VERIFY OTP ====================
+
+async function verifyOTP() {
+
+    const email = document.getElementById("email").value.trim();
+    const otp = document.getElementById("otp").value.trim();
+    const otpMessage = document.getElementById("otpMessage");
+
+    if (!email || !otp) {
+
+        otpMessage.style.color = "red";
+        otpMessage.textContent =
+            "Enter email and OTP.";
+
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/verify-otp",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email: email,
+                    otp: otp
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+
+            otpVerified = true;
+            verifiedEmail = email;
+
+            otpMessage.style.color = "green";
+            otpMessage.textContent =
+                "OTP verified successfully!";
+
+        } else {
+
+            otpVerified = false;
+
+            otpMessage.style.color = "red";
+            otpMessage.textContent =
+                data.message || "Invalid OTP.";
+
+        }
+
+    } catch (error) {
+
+        console.error("Verify OTP Error:", error);
+
+        otpMessage.style.color = "red";
+        otpMessage.textContent =
+            "Unable to connect to backend.";
+
+    }
+
+}
+
+// ==================== LOGIN ====================
+
+document.getElementById("loginForm").addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const role =
+            document.getElementById("role").value;
+
+        const message =
+            document.getElementById("message");
+
+        const loginButton =
+            document.getElementById("loginButton");
+
+        // ADMIN LOGIN
+
+        if (role === "admin") {
+
+            if (
+                email === "admin@gmail.com" &&
+                password === "Admin@123"
+            ) {
+
+                message.style.color = "green";
+                message.textContent =
+                    "Admin Login Successful!";
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "admin-dashboard.html";
+
+                }, 1000);
+
+            } else {
+
+                message.style.color = "red";
+                message.textContent =
+                    "Invalid Admin Email or Password.";
+
+            }
+
+            return;
+        }
+
+        // USER OTP CHECK
+
+        if (!otpVerified || verifiedEmail !== email) {
+
+            message.style.color = "red";
+            message.textContent =
+                "Please verify OTP before login.";
+
+            return;
+        }
+
+        // USER LOGIN
+
+        loginButton.disabled = true;
+        loginButton.textContent = "Logging in...";
+
+        try {
+
+            const response = await fetch(
+                "http://localhost:5000/api/login",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                }
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+
+                if (data.user) {
+
+                    localStorage.setItem(
+                        "loggedInUser",
+                        JSON.stringify(data.user)
+                    );
+
+                }
+
+                message.style.color = "green";
+                message.textContent =
+                    "User Login Successful!";
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "user-dashboard.html";
+
+                }, 1000);
+
+            } else {
+
+                message.style.color = "red";
+                message.textContent =
+                    data.message ||
+                    "Invalid email or password.";
+
+                loginButton.disabled = false;
+                loginButton.textContent = "Login";
+
+            }
+
+        } catch (error) {
+
+            console.error("Login Error:", error);
+
+            message.style.color = "red";
+            message.textContent =
+                "Unable to connect to server.";
+
+            loginButton.disabled = false;
+            loginButton.textContent = "Login";
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
-
 </html>
-

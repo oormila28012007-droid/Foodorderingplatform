@@ -1,490 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Foodo - Food Delivery</title>
+    <title>FoodieHub - Food Ordering Platform</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fffaf5;
+            color: #333;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            width: 100%;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #ff5722;
+        }
+
+        .login-btn {
+            background: #ff5722;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 8px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 7%;
+            gap: 40px;
+        }
+
+        .hero-content {
+            max-width: 570px;
+        }
+
+        .hero-content h1 {
+            font-size: 55px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: #ff5722;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            text-decoration: none;
+            background: #ff5722;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .primary-btn:hover {
+            background: #e64a19;
+        }
+
+        .secondary-btn {
+            text-decoration: none;
+            border: 2px solid #ff5722;
+            color: #ff5722;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .secondary-btn:hover {
+            background: #ff5722;
+            color: white;
+        }
+
+        /* HERO FOOD */
+
+        .hero-food {
+            width: 430px;
+            height: 430px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffe0b2, #ffccbc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 210px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        /* FEATURES */
+
+        .features {
+            padding: 60px 7%;
+            background: white;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .section-title span {
+            color: #ff5722;
+        }
+
+        .feature-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            padding: 30px 20px;
+            border-radius: 15px;
+            background: #fffaf5;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .feature-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* HOW IT WORKS */
+
+        .how {
+            padding: 70px 7%;
+            text-align: center;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #ff5722;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .step h3 {
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer h2 {
+            color: #ff7043;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #bbb;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 50px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-food {
+                width: 300px;
+                height: 300px;
+                font-size: 140px;
+            }
+
+            .feature-container {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            nav {
+                padding: 15px 4%;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .nav-links a:not(.login-btn) {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 35px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-food {
+                width: 250px;
+                height: 250px;
+                font-size: 115px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- NAVBAR -->
 
-    <header class="navbar">
+    <nav>
 
         <div class="logo">
-            🍴 <span>Foodo.</span>
+            🍔 FoodieHub
         </div>
 
-        <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#restaurants">Restaurants</a>
-            <a href="#categories">Categories</a>
-            <a href="#offers">Offers</a>
-            <a href="#">Track Order</a>
-            <a href="#">Contact</a>
-        </nav>
+        <div class="nav-links">
 
-        <div class="nav-buttons">
-            <button class="search-icon">🔍</button>
-            <button class="cart-icon">🛒</button>
-            <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+            <a href="index.html">Home</a>
+
+            <a href="menu.html">Menu</a>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
         </div>
 
-    </header>
+    </nav>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO SECTION -->
 
     <section class="hero">
 
-        <div class="hero-left">
-
-            <div class="fresh-badge">
-                🔥 HOT & FRESH
-            </div>
+        <div class="hero-content">
 
             <h1>
-                Delicious food
-                <span>Delivered</span> fast
+                Delicious Food,
+                <span>Delivered Fast!</span>
             </h1>
 
             <p>
-                Discover the best restaurants near you and enjoy
-                your favorite food at your doorstep.
+                Order your favourite food from your favourite
+                restaurants. Fast delivery, easy ordering and
+                delicious meals — all in one place.
             </p>
 
-            <div class="location-box">
+            <div class="hero-buttons">
 
-                <span class="location-icon">📍</span>
+                <a href="menu.html" class="primary-btn">
+                    🍕 Order Now
+                </a>
 
-                <input
-                    type="text"
-                    id="locationInput"
-                    placeholder="Enter your delivery location">
-
-                <button onclick="findFood()">
-                    Find Food
-                </button>
-
-            </div>
-
-            <div class="stats">
-
-                <div class="stat">
-                    <b>🏠 500+</b>
-                    <small>Restaurants</small>
-                </div>
-
-                <div class="stat">
-                    <b>🚴 30 min</b>
-                    <small>Fast Delivery</small>
-                </div>
-
-                <div class="stat">
-                    <b>⭐ 4.9+</b>
-                    <small>Top Rating</small>
-                </div>
+                <a href="register.html" class="secondary-btn">
+                    Create Account
+                </a>
 
             </div>
 
         </div>
 
 
-        <!-- HERO FOOD -->
-
-        <div class="hero-right">
-
-            <div class="yellow-circle"></div>
-
-            <img
-                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80"
-                alt="Healthy Food"
-                class="hero-food">
-
-            <div class="discount">
-                🔥 <b>50% OFF</b>
-                <small>On your first order</small>
-            </div>
-
-            <div class="delivery-time">
-                🚴 <b>25-30 min</b>
-                <small>Delivery Time</small>
-            </div>
-
+        <div class="hero-food">
+            🍕
         </div>
 
     </section>
 
 
-    <!-- ================= CATEGORIES ================= -->
+    <!-- FEATURES -->
 
-    <section class="section" id="categories">
+    <section class="features">
 
-        <div class="section-heading">
-
-            <h2>Explore Categories</h2>
-
-            <a href="#">View all categories →</a>
-
-        </div>
-
-
-        <div class="category-grid">
-
-            <div class="category">
-                <div class="category-image">🍕</div>
-                <h3>Pizza</h3>
-                <p>120+ Items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-image">🍔</div>
-                <h3>Burgers</h3>
-                <p>90+ Items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-image">🍛</div>
-                <h3>Biryani</h3>
-                <p>100+ Items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-image">🍗</div>
-                <h3>Chicken</h3>
-                <p>80+ Items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-image">🍜</div>
-                <h3>Noodles</h3>
-                <p>70+ Items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-image">🍰</div>
-                <h3>Desserts</h3>
-                <p>60+ Items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-image">🥤</div>
-                <h3>Drinks</h3>
-                <p>50+ Items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-image">•••</div>
-                <h3>More</h3>
-                <p>Explore</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= RESTAURANTS ================= -->
-
-    <section class="section" id="restaurants">
-
-        <div class="section-heading">
-
-            <h2>Popular Restaurants</h2>
-
-            <a href="#">See all restaurants →</a>
-
-        </div>
-
-
-        <div class="restaurant-grid">
-
-
-            <!-- RESTAURANT 1 -->
-
-            <div class="restaurant-card">
-
-                <div class="restaurant-photo">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=600&q=80"
-                        alt="Spice Garden">
-
-                    <span class="offer-tag">20% OFF</span>
-
-                    <button class="heart">♡</button>
-
-                </div>
-
-                <div class="restaurant-details">
-
-                    <div class="restaurant-title">
-                        <h3>Spice Garden</h3>
-                        <span>⭐ 4.8</span>
-                    </div>
-
-                    <p>Indian, Biryani, North Indian</p>
-
-                    <div class="restaurant-meta">
-                        <span>🚴 25-30 min</span>
-                        <b>₹₹</b>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- RESTAURANT 2 -->
-
-            <div class="restaurant-card">
-
-                <div class="restaurant-photo">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80"
-                        alt="Pizza House">
-
-                    <span class="offer-tag">15% OFF</span>
-
-                    <button class="heart">♡</button>
-
-                </div>
-
-                <div class="restaurant-details">
-
-                    <div class="restaurant-title">
-                        <h3>Pizza House</h3>
-                        <span>⭐ 4.7</span>
-                    </div>
-
-                    <p>Italian, Pizza, Fast Food</p>
-
-                    <div class="restaurant-meta">
-                        <span>🚴 20-25 min</span>
-                        <b>₹₹</b>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- RESTAURANT 3 -->
-
-            <div class="restaurant-card">
-
-                <div class="restaurant-photo">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
-                        alt="Burger Point">
-
-                    <span class="offer-tag">10% OFF</span>
-
-                    <button class="heart">♡</button>
-
-                </div>
-
-                <div class="restaurant-details">
-
-                    <div class="restaurant-title">
-                        <h3>Burger Point</h3>
-                        <span>⭐ 4.6</span>
-                    </div>
-
-                    <p>Burgers, Fast Food, Beverages</p>
-
-                    <div class="restaurant-meta">
-                        <span>🚴 15-20 min</span>
-                        <b>₹₹</b>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- RESTAURANT 4 -->
-
-            <div class="restaurant-card">
-
-                <div class="restaurant-photo">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"
-                        alt="Green Bowl">
-
-                    <span class="offer-tag">25% OFF</span>
-
-                    <button class="heart">♡</button>
-
-                </div>
-
-                <div class="restaurant-details">
-
-                    <div class="restaurant-title">
-                        <h3>Green Bowl</h3>
-                        <span>⭐ 4.9</span>
-                    </div>
-
-                    <p>Healthy, Salad, Fresh Food</p>
-
-                    <div class="restaurant-meta">
-                        <span>🚴 20-30 min</span>
-                        <b>₹₹</b>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= OFFER ================= -->
-
-    <section class="offer-banner" id="offers">
-
-        <div class="offer-text">
-
-            <small>LIMITED TIME OFFER</small>
-
-            <h2>
-                Get <strong>50% OFF</strong>
-                <br>
-                on your first order!
-            </h2>
-
-            <p>
-                Use code <b>FOODO50</b> at checkout
-            </p>
-
-            <button onclick="orderNow()">
-                Order Now →
-            </button>
-
-        </div>
-
-        <div class="offer-visual">
-            🛵 📱
-        </div>
-
-    </section>
-
-
-    <!-- ================= WHY CHOOSE US ================= -->
-
-    <section class="section">
-
-        <h2 class="center-heading">
-            Why Choose Foodo?
+        <h2 class="section-title">
+            Why Choose <span>FoodieHub?</span>
         </h2>
 
-        <div class="why-grid">
+        <div class="feature-container">
 
-            <div class="why-card">
-                <div class="why-icon">🚴</div>
-                <h3>Fast Delivery</h3>
-                <p>
-                    Lightning fast delivery at your doorstep.
-                </p>
-            </div>
+            <div class="feature-card">
 
-            <div class="why-card">
-                <div class="why-icon">🏆</div>
-                <h3>Best Quality</h3>
-                <p>
-                    We ensure the best quality and hygiene.
-                </p>
-            </div>
-
-            <div class="why-card">
-                <div class="why-icon">💳</div>
-                <h3>Secure Payment</h3>
-                <p>
-                    100% secure payment options available.
-                </p>
-            </div>
-
-            <div class="why-card">
-                <div class="why-icon">🎧</div>
-                <h3>24/7 Support</h3>
-                <p>
-                    We're here to help you anytime.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= REVIEWS ================= -->
-
-    <section class="section">
-
-        <div class="section-heading">
-
-            <h2>What Our Customers Say</h2>
-
-            <a href="#">View all reviews →</a>
-
-        </div>
-
-
-        <div class="reviews-grid">
-
-            <div class="review-card">
-
-                <h3>👩 Priya Sharma</h3>
-
-                <div class="stars">
-                    ★★★★★
+                <div class="feature-icon">
+                    🍔
                 </div>
 
+                <h3>
+                    Wide Food Selection
+                </h3>
+
                 <p>
-                    "Amazing food and super fast delivery.
-                    Foodo is my favorite!"
+                    Choose from delicious food items
+                    available on our platform.
                 </p>
 
             </div>
 
 
-            <div class="review-card">
+            <div class="feature-card">
 
-                <h3>👨 Rahul Verma</h3>
-
-                <div class="stars">
-                    ★★★★★
+                <div class="feature-icon">
+                    ⚡
                 </div>
 
+                <h3>
+                    Fast Delivery
+                </h3>
+
                 <p>
-                    "Great service, wide variety of food
-                    and easy to order."
+                    Get your favourite food delivered
+                    quickly and conveniently.
                 </p>
 
             </div>
 
 
-            <div class="review-card">
+            <div class="feature-card">
 
-                <h3>👩 Ananya Iyer</h3>
-
-                <div class="stars">
-                    ★★★★★
+                <div class="feature-icon">
+                    🔒
                 </div>
 
+                <h3>
+                    Easy & Secure
+                </h3>
+
                 <p>
-                    "The best food delivery app
-                    I have ever used!"
+                    Simple ordering process with
+                    secure user login and order tracking.
                 </p>
 
             </div>
@@ -494,114 +462,108 @@
     </section>
 
 
-    <!-- ================= APP DOWNLOAD ================= -->
+    <!-- HOW IT WORKS -->
 
-    <section class="app-banner">
+    <section class="how">
 
-        <div class="app-content">
+        <h2 class="section-title">
+            How It <span>Works</span>
+        </h2>
 
-            <h2>Download the Foodo App</h2>
+        <div class="steps">
 
-            <p>
-                Get exclusive offers, track orders
-                and experience fast delivery.
-            </p>
+            <div class="step">
 
-        </div>
+                <div class="step-number">
+                    1
+                </div>
 
-        <div class="app-buttons">
+                <h3>
+                    Register
+                </h3>
 
-            <button>▶ Google Play</button>
+                <p>
+                    Create your account easily.
+                </p>
 
-            <button> App Store</button>
+            </div>
 
-        </div>
 
-        <div class="qr-code">
-            ▣
-            <small>Scan to Download</small>
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Choose Food
+                </h3>
+
+                <p>
+                    Browse the menu and select your food.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Place Order
+                </h3>
+
+                <p>
+                    Add food to cart and place your order.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <h3>
+                    Track Delivery
+                </h3>
+
+                <p>
+                    Track your order status easily.
+                </p>
+
+            </div>
+
         </div>
 
     </section>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- FOOTER -->
 
     <footer>
 
-        <div class="footer-brand">
+        <h2>
+            🍔 FoodieHub
+        </h2>
 
-            <h2>🍴 Foodo.</h2>
+        <p>
+            Connecting restaurants, delivery partners,
+            and customers through a single application.
+        </p>
 
-            <p>
-                Your favorite food, delivered
-                fast to your doorstep.
-            </p>
+        <br>
 
-        </div>
-
-
-        <div class="footer-column">
-
-            <h3>Company</h3>
-
-            <a href="#">About Us</a>
-            <a href="#">Careers</a>
-            <a href="#">Blog</a>
-            <a href="#">Partner With Us</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h3>Quick Links</h3>
-
-            <a href="#">Restaurants</a>
-            <a href="#">Categories</a>
-            <a href="#">Offers</a>
-            <a href="#">Track Order</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h3>Support</h3>
-
-            <a href="#">Help Center</a>
-            <a href="#">FAQs</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h3>Subscribe to get updates</h3>
-
-            <input
-                type="email"
-                placeholder="Enter your email"
-                id="emailInput">
-
-            <button onclick="subscribeUser()">
-                Subscribe
-            </button>
-
-        </div>
+        <p>
+            © 2026 FoodieHub. All Rights Reserved.
+        </p>
 
     </footer>
 
-
-    <div class="copyright">
-        © 2026 Foodo. All rights reserved.
-    </div>
-
-
-    <script src="script.js"></script>
-
 </body>
-
 </html>

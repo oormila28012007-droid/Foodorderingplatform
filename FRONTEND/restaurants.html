@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Foodie - Restaurants</title>
+
+    <link rel="stylesheet" href="restaurants.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🍴 <span>Foodie</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="menu.html">Menu</a>
+            </li>
+
+            <li>
+                <a href="restaurants.html" class="active">
+                    Restaurants
+                </a>
+            </li>
+
+            <li>
+                <a href="offers.html">Offers</a>
+            </li>
+
+            <li>
+                <a href="#">Contact</a>
+            </li>
+
+        </ul>
+
+        <div class="nav-actions">
+
+            <a href="cart.html" class="cart-button">
+                🛒 Cart
+            </a>
+
+            <a href="login.html" class="login-button">
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero-section">
+
+        <div class="hero-content">
+
+            <span class="small-heading">
+                ✨ Discover Delicious Food
+            </span>
+
+            <h1>
+                Find Your Favourite
+                <span>Restaurants</span>
+            </h1>
+
+            <p>
+                Explore amazing restaurants near you and enjoy
+                delicious food delivered to your doorstep.
+            </p>
+
+            <div class="search-container">
+
+                <span>🔍</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search restaurant..."
+                    onkeyup="searchRestaurants()"
+                >
+
+                <button onclick="searchRestaurants()">
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-food">
+            🍕
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORY SECTION -->
+
+    <section class="category-section">
+
+        <div class="section-title">
+
+            <span>EXPLORE</span>
+
+            <h2>Choose Your Favourite</h2>
+
+        </div>
+
+        <div class="category-buttons">
+
+            <button onclick="filterRestaurants('all')">
+                🍽️ All
+            </button>
+
+            <button onclick="filterRestaurants('south')">
+                🍛 South Indian
+            </button>
+
+            <button onclick="filterRestaurants('north')">
+                🥘 North Indian
+            </button>
+
+            <button onclick="filterRestaurants('fast')">
+                🍔 Fast Food
+            </button>
+
+            <button onclick="filterRestaurants('chinese')">
+                🍜 Chinese
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESTAURANT SECTION -->
+
+    <section class="restaurant-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span>TOP RESTAURANTS</span>
+                <h2>Popular Near You</h2>
+            </div>
+
+            <p>
+                Fresh food • Great taste • Fast delivery
+            </p>
+
+        </div>
+
+
+        <div class="restaurant-grid" id="restaurantGrid">
+
+
+            <!-- CARD 1 -->
+
+            <div class="restaurant-card" data-category="south">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80"
+                        alt="South Indian Food"
+                    >
+
+                    <span class="offer-badge">
+                        20% OFF
+                    </span>
+
+                    <button class="heart-button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-top">
+
+                        <span class="food-type">
+                            South Indian
+                        </span>
+
+                        <span class="rating">
+                            ⭐ 4.8
+                        </span>
+
+                    </div>
+
+                    <h3>Madurai Kitchen</h3>
+
+                    <p>
+                        Traditional South Indian dishes,
+                        dosa, idli and delicious meals.
+                    </p>
+
+                    <div class="card-details">
+
+                        <span>🕒 25 mins</span>
+
+                        <span>📍 Madurai</span>
+
+                    </div>
+
+                    <a href="menu.html" class="view-menu">
+                        View Menu <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+
+            <div class="restaurant-card" data-category="north">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80"
+                        alt="North Indian Food"
+                    >
+
+                    <span class="offer-badge">
+                        15% OFF
+                    </span>
+
+                    <button class="heart-button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-top">
+
+                        <span class="food-type">
+                            North Indian
+                        </span>
+
+                        <span class="rating">
+                            ⭐ 4.6
+                        </span>
+
+                    </div>
+
+                    <h3>Royal Punjabi</h3>
+
+                    <p>
+                        Delicious naan, paneer, biryani
+                        and traditional Punjabi dishes.
+                    </p>
+
+                    <div class="card-details">
+
+                        <span>🕒 30 mins</span>
+
+                        <span>📍 Madurai</span>
+
+                    </div>
+
+                    <a href="menu.html" class="view-menu">
+                        View Menu <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+
+            <div class="restaurant-card" data-category="fast">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+                        alt="Burger"
+                    >
+
+                    <span class="offer-badge">
+                        25% OFF
+                    </span>
+
+                    <button class="heart-button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-top">
+
+                        <span class="food-type">
+                            Fast Food
+                        </span>
+
+                        <span class="rating">
+                            ⭐ 4.7
+                        </span>
+
+                    </div>
+
+                    <h3>Burger House</h3>
+
+                    <p>
+                        Juicy burgers, crispy fries,
+                        sandwiches and tasty snacks.
+                    </p>
+
+                    <div class="card-details">
+
+                        <span>🕒 20 mins</span>
+
+                        <span>📍 Madurai</span>
+
+                    </div>
+
+                    <a href="menu.html" class="view-menu">
+                        View Menu <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 4 -->
+
+            <div class="restaurant-card" data-category="chinese">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=800&q=80"
+                        alt="Chinese Noodles"
+                    >
+
+                    <span class="offer-badge">
+                        10% OFF
+                    </span>
+
+                    <button class="heart-button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-top">
+
+                        <span class="food-type">
+                            Chinese
+                        </span>
+
+                        <span class="rating">
+                            ⭐ 4.5
+                        </span>
+
+                    </div>
+
+                    <h3>Dragon Chinese</h3>
+
+                    <p>
+                        Tasty noodles, fried rice,
+                        Manchurian and Chinese food.
+                    </p>
+
+                    <div class="card-details">
+
+                        <span>🕒 35 mins</span>
+
+                        <span>📍 Madurai</span>
+
+                    </div>
+
+                    <a href="menu.html" class="view-menu">
+                        View Menu <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 5 -->
+
+            <div class="restaurant-card" data-category="south">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
+                        alt="Pizza"
+                    >
+
+                    <span class="offer-badge">
+                        30% OFF
+                    </span>
+
+                    <button class="heart-button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-top">
+
+                        <span class="food-type">
+                            South Indian
+                        </span>
+
+                        <span class="rating">
+                            ⭐ 4.4
+                        </span>
+
+                    </div>
+
+                    <h3>Spicy Food Corner</h3>
+
+                    <p>
+                        Spicy meals, parotta,
+                        chicken dishes and special combos.
+                    </p>
+
+                    <div class="card-details">
+
+                        <span>🕒 28 mins</span>
+
+                        <span>📍 Madurai</span>
+
+                    </div>
+
+                    <a href="menu.html" class="view-menu">
+                        View Menu <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 6 -->
+
+            <div class="restaurant-card" data-category="fast">
+
+                <div class="image-container">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=800&q=80"
+                        alt="Fried Chicken"
+                    >
+
+                    <span class="offer-badge">
+                        20% OFF
+                    </span>
+
+                    <button class="heart-button">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-top">
+
+                        <span class="food-type">
+                            Fast Food
+                        </span>
+
+                        <span class="rating">
+                            ⭐ 4.6
+                        </span>
+
+                    </div>
+
+                    <h3>Food Express</h3>
+
+                    <p>
+                        Fried chicken, pizza, burgers
+                        and quick delicious bites.
+                    </p>
+
+                    <div class="card-details">
+
+                        <span>🕒 22 mins</span>
+
+                        <span>📍 Madurai</span>
+
+                    </div>
+
+                    <a href="menu.html" class="view-menu">
+                        View Menu <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <p id="noResult" class="no-result">
+            😔 No restaurants found!
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <h2>🍴 Foodie</h2>
+
+        <p>
+            Delicious food delivered with love.
+        </p>
+
+        <p class="copyright">
+            © 2026 Foodie. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function searchRestaurants() {
+
+            let searchText =
+                document.getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+            let cards =
+                document.querySelectorAll(".restaurant-card");
+
+            let found = false;
+
+            cards.forEach(function(card) {
+
+                let name =
+                    card.querySelector("h3")
+                    .innerText
+                    .toLowerCase();
+
+                let description =
+                    card.querySelector("p")
+                    .innerText
+                    .toLowerCase();
+
+                if (
+                    name.includes(searchText) ||
+                    description.includes(searchText)
+                ) {
+
+                    card.style.display = "block";
+                    found = true;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+            document.getElementById("noResult").style.display =
+                found ? "none" : "block";
+
+        }
+
+
+        function filterRestaurants(category) {
+
+            let cards =
+                document.querySelectorAll(".restaurant-card");
+
+            let found = false;
+
+            cards.forEach(function(card) {
+
+                let cardCategory =
+                    card.getAttribute("data-category");
+
+                if (
+                    category === "all" ||
+                    cardCategory === category
+                ) {
+
+                    card.style.display = "block";
+                    found = true;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+            document.getElementById("noResult").style.display =
+                found ? "none" : "block";
+
+        }
+
+
+        let heartButtons =
+            document.querySelectorAll(".heart-button");
+
+        heartButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                if (button.innerText === "♡") {
+
+                    button.innerText = "♥";
+                    button.classList.add("liked");
+
+                } else {
+
+                    button.innerText = "♡";
+                    button.classList.remove("liked");
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

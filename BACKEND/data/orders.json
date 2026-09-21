@@ -1,0 +1,79 @@
+[
+  {
+    "id": "ORD1788535493579",
+    "customerName": "ooru",
+    "email": "test@gmail.com",
+    "phone": "8489145003",
+    "address": "bbssj",
+    "items": [
+      {
+        "name": "Chicken Biryani",
+        "price": 229,
+        "quantity": 1
+      },
+      {
+        "name": "Margherita Pizza",
+        "price": 249,
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 518,
+    "paymentMethod": "Cash on Delivery",
+    "status": "Accepted",
+    "orderDate": "4/9/2026, 8:54:53 pm"
+  },
+  {
+    "id": "ORD1788536070796",
+    "customerName": "oo",
+    "email": "test@gmail.com",
+    "phone": "6788776668",
+    "address": "fxgjijuh",
+    "items": [
+      {
+        "name": "Margherita Pizza",
+        "price": 249,
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 289,
+    "paymentMethod": "Cash on Delivery",
+    "status": "Delivered",
+    "orderDate": "4/9/2026, 9:04:30 pm"
+  },
+  {
+    "id": "ORD1788538926157",
+    "customerName": "ooo",
+    "email": "test@gmail.com",
+    "phone": "8877887546",
+    "address": "juyujhgj",
+    "items": [
+      {
+        "name": "Margherita Pizza",
+        "price": 249,
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 289,
+    "paymentMethod": "Cash on Delivery",
+    "status": "Placed",
+    "orderDate": "4/9/2026, 9:52:06 pm"
+  },
+  {
+    "id": "ORD1788708793406",
+    "customerName": "kani",
+    "email": "test@gmail.com",
+    "phone": "5674389765",
+    "address": "gfgjj",
+    "items": [
+      {
+        "name": "Chocolate Cake",
+        "price": 149,
+        "quantity": 1
+      }
+    ],
+    "totalAmount": 189,
+    "paymentMethod": "Cash on Delivery",
+    "status": "Placed",
+    "orderDate": "6/9/2026, 9:03:13 pm"
+  }
+]

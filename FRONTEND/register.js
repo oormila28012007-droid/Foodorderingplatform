@@ -1,153 +1,123 @@
-const registerForm =
-    document.getElementById("registerForm");
+document.addEventListener("DOMContentLoaded", () => {
 
+    const form = document.getElementById("registerForm");
 
-const passwordInput =
-    document.getElementById("password");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput =
+        document.getElementById("confirmPassword");
 
+    const message = document.getElementById("message");
+    const registerButton =
+        document.getElementById("registerButton");
 
-const confirmPasswordInput =
-    document.getElementById("confirmPassword");
-
-
-const showPassword =
-    document.getElementById("showPassword");
-
-
-const showConfirmPassword =
-    document.getElementById("showConfirmPassword");
-
-
-/* SHOW / HIDE PASSWORD */
-
-showPassword.addEventListener("click", function () {
-
-    if (passwordInput.type === "password") {
-
-        passwordInput.type = "text";
-
-        showPassword.textContent = "🙈";
-
-    } else {
-
-        passwordInput.type = "password";
-
-        showPassword.textContent = "👁";
-
-    }
-
-});
-
-
-/* SHOW / HIDE CONFIRM PASSWORD */
-
-showConfirmPassword.addEventListener("click", function () {
-
-    if (confirmPasswordInput.type === "password") {
-
-        confirmPasswordInput.type = "text";
-
-        showConfirmPassword.textContent = "🙈";
-
-    } else {
-
-        confirmPasswordInput.type = "password";
-
-        showConfirmPassword.textContent = "👁";
-
-    }
-
-});
-
-
-/* REGISTER */
-
-registerForm.addEventListener("submit", function (event) {
-
-    event.preventDefault();
-
-
-    const name =
-        document.getElementById("name").value.trim();
-
-
-    const email =
-        document.getElementById("email").value.trim();
-
-
-    const phone =
-        document.getElementById("phone").value.trim();
-
-
-    const password =
-        passwordInput.value.trim();
-
-
-    const confirmPassword =
-        confirmPasswordInput.value.trim();
-
-
-    const terms =
-        document.getElementById("terms").checked;
-
-
-    /* CHECK PASSWORD */
-
-    if (password.length < 6) {
-
-        alert(
-            "Password must contain at least 6 characters."
-        );
-
+    if (!form) {
+        console.error("Register form not found");
         return;
     }
 
+    form.addEventListener("submit", async (event) => {
 
-    /* CHECK CONFIRM PASSWORD */
+        event.preventDefault();
 
-    if (password !== confirmPassword) {
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
 
-        alert(
-            "Passwords do not match."
-        );
+        message.style.color = "red";
 
-        return;
-    }
+        if (
+            name === "" ||
+            email === "" ||
+            phone === "" ||
+            password === "" ||
+            confirmPassword === ""
+        ) {
+            message.textContent = "Please fill all fields.";
+            return;
+        }
 
+        if (!/^[0-9]{10}$/.test(phone)) {
+            message.textContent =
+                "Phone number must contain exactly 10 digits.";
+            return;
+        }
 
-    /* CHECK PHONE */
+        const passwordPattern =
+            /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
 
-    if (!/^[0-9]{10}$/.test(phone)) {
+        if (!passwordPattern.test(password)) {
+            message.textContent =
+                "Password must contain 8 characters, uppercase, number and special character.";
+            return;
+        }
 
-        alert(
-            "Please enter a valid 10-digit phone number."
-        );
+        if (password !== confirmPassword) {
+            message.textContent = "Passwords do not match.";
+            return;
+        }
 
-        return;
-    }
+        registerButton.disabled = true;
+        registerButton.textContent = "Registering...";
 
+        try {
 
-    /* CHECK TERMS */
+            const response = await fetch(
+                "http://localhost:5000/api/register",
+                {
+                    method: "POST",
 
-    if (!terms) {
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
 
-        alert(
-            "Please accept the Terms & Conditions."
-        );
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        password: password
+                    })
+                }
+            );
 
-        return;
-    }
+            const data = await response.json();
 
+            if (response.ok) {
 
-    /* SUCCESS */
+                message.style.color = "green";
+                message.textContent =
+                    "Registration successful!";
 
-    alert(
-        "Account created successfully! 🎉"
-    );
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1500);
 
+            } else {
 
-    /* GO TO MENU */
+                message.textContent =
+                    data.message || "Registration failed.";
 
-    window.location.href = "menu.html";
+                registerButton.disabled = false;
+                registerButton.textContent = "Register";
+
+            }
+
+        } catch (error) {
+
+            console.error("Registration Error:", error);
+
+            message.textContent =
+                "Backend connection failed. Please start the server.";
+
+            registerButton.disabled = false;
+            registerButton.textContent = "Register";
+
+        }
+
+    });
 
 });

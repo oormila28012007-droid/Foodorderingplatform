@@ -1,224 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Foodo - Create Account</title>
+    <title>Foodie - Register</title>
 
-    <link rel="stylesheet" href="register.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+        }
+
+        .register-container {
+            width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff5e62;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff5e62;
+        }
+
+        .password-info {
+            font-size: 12px;
+            color: #777;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 20px;
+            background: #ff5e62;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e94b50;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .login-link a {
+            color: #ff5e62;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="register-container">
 
-        <!-- LEFT SIDE -->
-
-        <div class="register-left">
-
-            <div class="brand">
-                🍴 Foodo.
-            </div>
-
-            <div class="welcome">
-
-                <h1>Join Foodo! 🍕</h1>
-
-                <p>
-                    Create your account and discover
-                    delicious food from your favorite restaurants.
-                </p>
-
-                <div class="features">
-
-                    <div>
-                        🚴
-                        <span>Fast Delivery</span>
-                    </div>
-
-                    <div>
-                        🍔
-                        <span>Thousands of Foods</span>
-                    </div>
-
-                    <div>
-                        🎁
-                        <span>Exclusive Offers</span>
-                    </div>
-
-                    <div>
-                        🔒
-                        <span>Safe & Secure</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- RIGHT SIDE -->
-
-        <div class="register-right">
-
-            <div class="register-box">
-
-                <h2>Create Account</h2>
-
-                <p class="subtitle">
-                    Sign up to start ordering your favorite food
-                </p>
-
-
-                <form id="registerForm">
-
-                    <!-- FULL NAME -->
-
-                    <label>Full Name</label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="Enter your full name"
-                        required
-                    >
-
-
-                    <!-- EMAIL -->
-
-                    <label>Email Address</label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        required
-                    >
-
-
-                    <!-- PHONE -->
-
-                    <label>Phone Number</label>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        placeholder="Enter your phone number"
-                        maxlength="10"
-                        required
-                    >
-
-
-                    <!-- PASSWORD -->
-
-                    <label>Password</label>
-
-                    <div class="password-box">
-
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Create a password"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            id="showPassword">
-                            👁
-                        </button>
-
-                    </div>
-
-
-                    <!-- CONFIRM PASSWORD -->
-
-                    <label>Confirm Password</label>
-
-                    <div class="password-box">
-
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            placeholder="Confirm your password"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            id="showConfirmPassword">
-                            👁
-                        </button>
-
-                    </div>
-
-
-                    <!-- TERMS -->
-
-                    <label class="terms">
-
-                        <input
-                            type="checkbox"
-                            id="terms"
-                            required
-                        >
-
-                        <span>
-                            I agree to the
-                            <a href="#">Terms & Conditions</a>
-                        </span>
-
-                    </label>
-
-
-                    <!-- REGISTER BUTTON -->
-
-                    <button
-                        type="submit"
-                        class="register-submit">
-
-                        Create Account
-
-                    </button>
-
-                </form>
-
-
-                <!-- LOGIN -->
-
-                <p class="login-text">
-
-                    Already have an account?
-
-                    <a href="login.html">
-                        Login
-                    </a>
-
-                </p>
-
-
-                <!-- HOME -->
-
-                <a
-                    href="index.html"
-                    class="home-link">
-
-                    ← Back to Home
-
-                </a>
-
-            </div>
-
-        </div>
+        <h1>🍴 Foodie</h1>
+
+        <p class="subtitle">Create Your Account</p>
+
+        <form id="registerForm">
+
+            <label for="name">Full Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label for="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="phone">Phone Number</label>
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter 10 digit phone number"
+                maxlength="10"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <p class="password-info">
+                Password must contain:<br>
+                • Minimum 8 characters<br>
+                • One uppercase letter<br>
+                • One number<br>
+                • One special character
+            </p>
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+                required
+            >
+
+            <button type="submit" id="registerButton">
+                Register
+            </button>
+
+        </form>
+
+        <div id="message"></div>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </p>
 
     </div>
 
+    <script>
 
-    <script src="register.js"></script>
+        const registerForm = document.getElementById("registerForm");
+
+        registerForm.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            const message = document.getElementById("message");
+            const registerButton =
+                document.getElementById("registerButton");
+
+            message.style.color = "red";
+
+            if (
+                name === "" ||
+                email === "" ||
+                phone === "" ||
+                password === "" ||
+                confirmPassword === ""
+            ) {
+                message.textContent = "Please fill all fields.";
+                return;
+            }
+
+            if (!/^[0-9]{10}$/.test(phone)) {
+                message.textContent =
+                    "Phone number must contain exactly 10 digits.";
+                return;
+            }
+
+            const passwordPattern =
+                /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+
+            if (!passwordPattern.test(password)) {
+                message.textContent =
+                    "Password does not meet the required conditions.";
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                message.textContent =
+                    "Passwords do not match.";
+                return;
+            }
+
+            registerButton.disabled = true;
+            registerButton.textContent = "Registering...";
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:5000/api/register",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            phone: phone,
+                            password: password
+                        })
+                    }
+                );
+
+                const data = await response.json();
+
+                if (response.ok) {
+
+                    message.style.color = "green";
+                    message.textContent =
+                        "Registration successful! Redirecting...";
+
+                    setTimeout(function() {
+                        window.location.href = "login.html";
+                    }, 1500);
+
+                } else {
+
+                    message.textContent =
+                        data.message || "Registration failed.";
+
+                    registerButton.disabled = false;
+                    registerButton.textContent = "Register";
+                }
+
+            } catch (error) {
+
+                console.error("Error:", error);
+
+                message.textContent =
+                    "Backend connection failed. Please start the server.";
+
+                registerButton.disabled = false;
+                registerButton.textContent = "Register";
+            }
+
+        });
+
+    </script>
 
 </body>
-
 </html>

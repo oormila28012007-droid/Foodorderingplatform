@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Foodie - Contact Us</title>
+
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🍴 Foodie</div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="restaurants.html">Restaurants</a></li>
+            <li><a href="offers.html">Offers</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+
+        <a href="login.html" class="login-btn">Login</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Contact Us 📩</h1>
+        <p>We are here to help you!</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+
+            <p>
+                Have questions or feedback?
+                Contact our team and we will help you.
+            </p>
+
+            <div class="info-box">
+                <span>📍</span>
+                <div>
+                    <h3>Address</h3>
+                    <p>Foodie Support Center, Tamil Nadu</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <span>📧</span>
+                <div>
+                    <h3>Email</h3>
+                    <p>support@foodie.com</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <span>📞</span>
+                <div>
+                    <h3>Phone</h3>
+                    <p>+91 98765 43210</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+
+            <form onsubmit="sendMessage(event)">
+
+                <input type="text" placeholder="Your Name" required>
+
+                <input type="email" placeholder="Your Email" required>
+
+                <input type="text" placeholder="Subject" required>
+
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+
+                <button type="submit">Send Message 🚀</button>
+
+            </form>
+
+            <p id="successMessage"></p>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>🍴 Foodie</h3>
+        <p>Delicious food delivered to your doorstep ❤️</p>
+        <p>© 2026 Foodie. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+    async function sendMessage(event) {
+        event.preventDefault();
+
+        const form = event.target;
+
+        const inputs = form.querySelectorAll("input");
+        const textarea = form.querySelector("textarea");
+
+        const name = inputs[0].value;
+        const email = inputs[1].value;
+        const subject = inputs[2].value;
+        const message = textarea.value;
+
+        try {
+            const response = await fetch(
+                "http://localhost:5000/api/contact",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        subject,
+                        message
+                    })
+                }
+            );
+
+            const result = await response.json();
+
+            if (response.ok) {
+                document.getElementById("successMessage").textContent =
+                    "Message sent successfully! 😊";
+
+                form.reset();
+            } else {
+                document.getElementById("successMessage").textContent =
+                    result.message;
+            }
+
+        } catch (error) {
+            document.getElementById("successMessage").textContent =
+                "Backend connection failed!";
+        }
+    }
+</script>
+
+</body>
+</html>
