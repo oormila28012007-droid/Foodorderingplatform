@@ -1,488 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Ordering - Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie - Login</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-        body {
-            background: linear-gradient(135deg, #ff9966, #ff5e62);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #fff0e6, #ffe0cc);
+    }
 
-        .login-box {
-            width: 400px;
-            background: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-        }
+    .card {
+      width: 100%;
+      max-width: 440px;
+      padding: 30px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px #0002;
+    }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 8px;
-            color: #ff6347;
-        }
+    h2 {
+      text-align: center;
+      color: #ff5722;
+      margin-bottom: 8px;
+    }
 
-        .subtitle {
-            text-align: center;
-            color: #777;
-            margin-bottom: 25px;
-        }
+    h3 {
+      color: #ff5722;
+      margin: 15px 0;
+    }
 
-        label {
-            display: block;
-            margin: 15px 0 7px;
-            font-weight: bold;
-        }
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin: 12px 0 22px;
+      line-height: 1.5;
+    }
 
-        input, select {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 15px;
-        }
+    label {
+      display: block;
+      margin: 14px 0 7px;
+      font-weight: bold;
+      color: #444;
+    }
 
-        button {
-            width: 100%;
-            padding: 14px;
-            margin-top: 18px;
-            border: none;
-            border-radius: 8px;
-            background: #ff6347;
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+    }
 
-        button:hover {
-            background: #e6533b;
-        }
+    button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 15px;
+      border: 0;
+      border-radius: 8px;
+      background: #ff5722;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-        button:disabled {
-            background: #aaa;
-            cursor: not-allowed;
-        }
+    button:hover {
+      background: #e64a19;
+    }
 
-        .message {
-            margin-top: 15px;
-            text-align: center;
-            font-weight: bold;
-        }
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
 
-        .requirements {
-            margin-top: 12px;
-            font-size: 13px;
-            color: #666;
-            line-height: 1.6;
-        }
+    .link {
+      text-align: right;
+      margin-top: 10px;
+    }
 
-        .register-link {
-            text-align: center;
-            margin-top: 20px;
-        }
+    .link a, .register-link a {
+      color: #ff5722;
+      text-decoration: none;
+    }
 
-        .register-link a {
-            color: #ff6347;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .message {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+      line-height: 1.5;
+    }
 
-        .otp-section {
-            margin-top: 15px;
-            padding: 15px;
-            background: #fff5ef;
-            border-radius: 10px;
-        }
+    .hidden {
+      display: none !important;
+    }
 
-        .otp-section button {
-            font-size: 14px;
-            padding: 11px;
-        }
+    .back {
+      background: #526ca8;
+    }
 
-        .otp-message {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: bold;
-        }
-    </style>
+    .register-link {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
 </head>
 
 <body>
+  <main class="card">
+    <h2>🍴 Foodie Login</h2>
+    <p class="subtitle">Welcome back!</p>
 
-<div class="login-box">
-
-    <h1>🍴 Foodie</h1>
-
-    <p class="subtitle">Enter your details to continue</p>
-
-    <form id="loginForm">
-
+    <!-- LOGIN -->
+    <section id="loginSection">
+      <form id="loginForm">
         <label for="email">Email Address</label>
-
         <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
+          type="email"
+          id="email"
+          required
+          autocomplete="email"
+          placeholder="Enter your registered email"
         >
-
-        <div class="otp-section">
-
-            <button type="button" id="sendOtpButton" onclick="sendOTP()">
-                📩 Send OTP
-            </button>
-
-            <label for="otp">Enter OTP</label>
-
-            <input
-                type="text"
-                id="otp"
-                placeholder="Enter 6-digit OTP"
-                maxlength="6"
-            >
-
-            <button type="button" onclick="verifyOTP()">
-                🔐 Verify OTP
-            </button>
-
-            <div class="otp-message" id="otpMessage"></div>
-
-        </div>
 
         <label for="password">Password</label>
-
         <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            required
+          type="password"
+          id="password"
+          required
+          autocomplete="current-password"
+          placeholder="Enter password"
         >
 
-        <label for="role">Login As</label>
-
-        <select id="role">
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-        </select>
-
-        <div class="requirements">
-            Password must contain:
-            <br>✓ First letter must be Capital
-            <br>✓ At least one Number
-            <br>✓ At least one Special Character
+        <div class="link">
+          <a href="#" id="forgotLink">Forgot Password?</a>
         </div>
 
-        <button type="submit" id="loginButton">
-            Login
+        <label for="role">Login As</label>
+        <select id="role">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <button type="button" id="sendLoginOtp">
+          Send Login OTP
         </button>
 
-        <div class="message" id="message"></div>
+        <div id="loginOtpArea" class="hidden">
+          <label for="loginOtp">Enter Login OTP</label>
+          <input
+            type="text"
+            id="loginOtp"
+            inputmode="numeric"
+            maxlength="6"
+            placeholder="Enter 6-digit OTP"
+          >
 
-    </form>
+          <button type="button" id="verifyLoginOtp">
+            Verify OTP
+          </button>
+        </div>
 
-    <div class="register-link">
+        <button type="submit">Login</button>
+        <p id="loginMessage" class="message" role="status"></p>
+      </form>
+
+      <p class="register-link">
         Don't have an account?
-        <a href="register.html">Create Account</a>
-    </div>
+        <a href="register.html">Register here</a>
+      </p>
+    </section>
 
-</div>
+    <!-- FORGOT PASSWORD - SAME PAGE -->
+    <section id="forgotSection" class="hidden">
+      <h3>Reset Password</h3>
 
-<script>
+      <p class="subtitle">
+        Get an OTP at your registered email and set a new password here.
+      </p>
 
-let otpVerified = false;
-let verifiedEmail = "";
+      <label for="resetEmail">Registered Email</label>
+      <input
+        type="email"
+        id="resetEmail"
+        autocomplete="email"
+        placeholder="Enter your registered email"
+      >
 
-// ==================== SEND OTP ====================
+      <button type="button" id="sendResetOtp">
+        Send Reset OTP
+      </button>
 
-async function sendOTP() {
+      <div id="resetOtpArea" class="hidden">
+        <label for="resetOtp">Enter Reset OTP</label>
+        <input
+          type="text"
+          id="resetOtp"
+          inputmode="numeric"
+          maxlength="6"
+          placeholder="Enter 6-digit OTP"
+        >
 
-    const email = document.getElementById("email").value.trim();
-    const otpMessage = document.getElementById("otpMessage");
-    const sendButton = document.getElementById("sendOtpButton");
+        <label for="newPassword">New Password</label>
+        <input
+          type="password"
+          id="newPassword"
+          autocomplete="new-password"
+          placeholder="At least 8 characters"
+        >
 
-    if (!email) {
+        <label for="confirmPassword">Confirm New Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          autocomplete="new-password"
+          placeholder="Re-enter new password"
+        >
 
-        otpMessage.style.color = "red";
-        otpMessage.textContent = "Please enter your email.";
+        <button type="button" id="resetPasswordBtn">
+          Change Password
+        </button>
+      </div>
 
-        return;
+      <p id="resetMessage" class="message" role="status"></p>
+
+      <button type="button" class="back" id="backToLogin">
+        Back to Login
+      </button>
+    </section>
+  </main>
+
+  <script>
+    const API = "http://localhost:5000/api";
+
+    const $ = id => document.getElementById(id);
+
+    let loginOtpVerified = false;
+    let verifiedLoginEmail = "";
+
+    async function apiRequest(endpoint, body) {
+      const response = await fetch(`${API}${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.message || "Request failed.");
+      }
+
+      return data;
     }
 
-    sendButton.disabled = true;
-    sendButton.textContent = "Sending OTP...";
+    function showMessage(id, message) {
+      $(id).textContent = message;
+    }
 
-    try {
+    function setBusy(buttonId, busy, busyText) {
+      const button = $(buttonId);
 
-        const response = await fetch(
-            "http://localhost:5000/api/send-otp",
-            {
-                method: "POST",
+      if (busy) {
+        button.dataset.originalText = button.textContent;
+        button.textContent = busyText;
+        button.disabled = true;
+      } else {
+        button.textContent =
+          button.dataset.originalText || button.textContent;
+        button.disabled = false;
+      }
+    }
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+    // Open Forgot Password on the same page
+    $("forgotLink").addEventListener("click", event => {
+      event.preventDefault();
 
-                body: JSON.stringify({
-                    email: email
-                })
-            }
+      $("loginSection").classList.add("hidden");
+      $("forgotSection").classList.remove("hidden");
+
+      $("resetEmail").value = $("email").value.trim();
+      showMessage("resetMessage", "");
+    });
+
+    // Return to Login on the same page
+    $("backToLogin").addEventListener("click", () => {
+      $("forgotSection").classList.add("hidden");
+      $("loginSection").classList.remove("hidden");
+      showMessage("loginMessage", "");
+    });
+
+    // Send Login OTP
+    $("sendLoginOtp").addEventListener("click", async () => {
+      const email = $("email").value.trim().toLowerCase();
+
+      if (!email) {
+        showMessage("loginMessage", "Enter your email first.");
+        $("email").focus();
+        return;
+      }
+
+      setBusy("sendLoginOtp", true, "Sending OTP...");
+      showMessage("loginMessage", "");
+
+      try {
+        const data = await apiRequest("/send-otp", { email });
+
+        showMessage("loginMessage", data.message || "OTP sent successfully.");
+        $("loginOtpArea").classList.remove("hidden");
+
+        loginOtpVerified = false;
+        verifiedLoginEmail = "";
+        $("loginOtp").value = "";
+      } catch (error) {
+        showMessage("loginMessage", error.message);
+      } finally {
+        setBusy("sendLoginOtp", false);
+      }
+    });
+
+    // Verify Login OTP
+    $("verifyLoginOtp").addEventListener("click", async () => {
+      const email = $("email").value.trim().toLowerCase();
+      const otp = $("loginOtp").value.trim();
+
+      if (!/^\d{6}$/.test(otp)) {
+        showMessage("loginMessage", "Enter the 6-digit OTP.");
+        return;
+      }
+
+      setBusy("verifyLoginOtp", true, "Verifying...");
+
+      try {
+        const data = await apiRequest("/verify-otp", { email, otp });
+
+        loginOtpVerified = true;
+        verifiedLoginEmail = email;
+
+        showMessage(
+          "loginMessage",
+          data.message || "OTP verified successfully."
+        );
+      } catch (error) {
+        loginOtpVerified = false;
+        verifiedLoginEmail = "";
+        showMessage("loginMessage", error.message);
+      } finally {
+        setBusy("verifyLoginOtp", false);
+      }
+    });
+
+    // Login
+    $("loginForm").addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const email = $("email").value.trim().toLowerCase();
+      const password = $("password").value;
+      const role = $("role").value;
+
+      if (!loginOtpVerified || verifiedLoginEmail !== email) {
+        showMessage("loginMessage", "Please verify a new login OTP first.");
+        return;
+      }
+
+      if (role === "admin") {
+        showMessage(
+          "loginMessage",
+          "Admin login is not configured by this user-login API. Please configure secure admin authentication on the backend."
+        );
+        return;
+      }
+
+      const button = $("loginForm").querySelector(
+        'button[type="submit"]'
+      );
+      button.disabled = true;
+      button.textContent = "Logging in...";
+
+      try {
+        const data = await apiRequest("/login", { email, password });
+
+        if (!data.user) {
+          throw new Error("User details were not returned by the server.");
+        }
+
+        localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+
+        window.location.href = "user-dashboard.html";
+      } catch (error) {
+        showMessage("loginMessage", error.message);
+      } finally {
+        button.disabled = false;
+        button.textContent = "Login";
+      }
+    });
+
+    // Send Password Reset OTP
+    $("sendResetOtp").addEventListener("click", async () => {
+      const email = $("resetEmail").value.trim().toLowerCase();
+
+      if (!email) {
+        showMessage("resetMessage", "Enter your registered email.");
+        $("resetEmail").focus();
+        return;
+      }
+
+      setBusy("sendResetOtp", true, "Sending OTP...");
+      showMessage("resetMessage", "");
+
+      try {
+        const data = await apiRequest("/forgot-password/send-otp", {
+          email
+        });
+
+        $("resetOtpArea").classList.remove("hidden");
+        $("resetOtp").value = "";
+        $("newPassword").value = "";
+        $("confirmPassword").value = "";
+
+        showMessage(
+          "resetMessage",
+          data.message || "Reset OTP sent. Check your email."
+        );
+      } catch (error) {
+        showMessage("resetMessage", error.message);
+      } finally {
+        setBusy("sendResetOtp", false);
+      }
+    });
+
+    // Change Password: backend verifies the reset OTP here
+    $("resetPasswordBtn").addEventListener("click", async () => {
+      const email = $("resetEmail").value.trim().toLowerCase();
+      const otp = $("resetOtp").value.trim();
+      const newPassword = $("newPassword").value;
+      const confirmPassword = $("confirmPassword").value;
+
+      if (!email || !/^\d{6}$/.test(otp) ||
+          !newPassword || !confirmPassword) {
+        showMessage(
+          "resetMessage",
+          "Enter your email, 6-digit OTP and both password fields."
+        );
+        return;
+      }
+
+      if (newPassword !== confirmPassword) {
+        showMessage("resetMessage", "Passwords do not match.");
+        return;
+      }
+
+      if (
+        newPassword.length < 8 ||
+        !/[A-Z]/.test(newPassword) ||
+        !/[0-9]/.test(newPassword) ||
+        !/[^A-Za-z0-9]/.test(newPassword)
+      ) {
+        showMessage(
+          "resetMessage",
+          "Use at least 8 characters with an uppercase letter, a number and a special character."
+        );
+        return;
+      }
+
+      setBusy("resetPasswordBtn", true, "Changing Password...");
+      showMessage("resetMessage", "");
+
+      try {
+        const data = await apiRequest("/forgot-password/reset", {
+          email,
+          otp,
+          newPassword
+        });
+
+        showMessage(
+          "resetMessage",
+          data.message || "Password changed successfully. You can log in now."
         );
 
-        const data = await response.json();
+        $("resetOtpArea").classList.add("hidden");
+        $("resetEmail").value = email;
 
-        if (response.ok) {
+        $("loginSection").classList.remove("hidden");
+        $("forgotSection").classList.add("hidden");
 
-            otpMessage.style.color = "green";
-            otpMessage.textContent =
-                "OTP sent to your email.";
+        $("email").value = email;
+        $("password").value = "";
+        $("loginOtp").value = "";
+        $("loginOtpArea").classList.add("hidden");
 
-        } else {
+        loginOtpVerified = false;
+        verifiedLoginEmail = "";
 
-            otpMessage.style.color = "red";
-            otpMessage.textContent =
-                data.message || "Failed to send OTP.";
-
-        }
-
-    } catch (error) {
-
-        console.error("Send OTP Error:", error);
-
-        otpMessage.style.color = "red";
-        otpMessage.textContent =
-            "Unable to connect to backend.";
-
-    }
-
-    sendButton.disabled = false;
-    sendButton.textContent = "📩 Send OTP";
-
-}
-
-// ==================== VERIFY OTP ====================
-
-async function verifyOTP() {
-
-    const email = document.getElementById("email").value.trim();
-    const otp = document.getElementById("otp").value.trim();
-    const otpMessage = document.getElementById("otpMessage");
-
-    if (!email || !otp) {
-
-        otpMessage.style.color = "red";
-        otpMessage.textContent =
-            "Enter email and OTP.";
-
-        return;
-    }
-
-    try {
-
-        const response = await fetch(
-            "http://localhost:5000/api/verify-otp",
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    email: email,
-                    otp: otp
-                })
-            }
+        showMessage(
+          "loginMessage",
+          "Password changed successfully. Send a new login OTP and log in."
         );
-
-        const data = await response.json();
-
-        if (response.ok) {
-
-            otpVerified = true;
-            verifiedEmail = email;
-
-            otpMessage.style.color = "green";
-            otpMessage.textContent =
-                "OTP verified successfully!";
-
-        } else {
-
-            otpVerified = false;
-
-            otpMessage.style.color = "red";
-            otpMessage.textContent =
-                data.message || "Invalid OTP.";
-
-        }
-
-    } catch (error) {
-
-        console.error("Verify OTP Error:", error);
-
-        otpMessage.style.color = "red";
-        otpMessage.textContent =
-            "Unable to connect to backend.";
-
-    }
-
-}
-
-// ==================== LOGIN ====================
-
-document.getElementById("loginForm").addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-        const email =
-            document.getElementById("email").value.trim();
-
-        const password =
-            document.getElementById("password").value;
-
-        const role =
-            document.getElementById("role").value;
-
-        const message =
-            document.getElementById("message");
-
-        const loginButton =
-            document.getElementById("loginButton");
-
-        // ADMIN LOGIN
-
-        if (role === "admin") {
-
-            if (
-                email === "admin@gmail.com" &&
-                password === "Admin@123"
-            ) {
-
-                message.style.color = "green";
-                message.textContent =
-                    "Admin Login Successful!";
-
-                setTimeout(function() {
-
-                    window.location.href =
-                        "admin-dashboard.html";
-
-                }, 1000);
-
-            } else {
-
-                message.style.color = "red";
-                message.textContent =
-                    "Invalid Admin Email or Password.";
-
-            }
-
-            return;
-        }
-
-        // USER OTP CHECK
-
-        if (!otpVerified || verifiedEmail !== email) {
-
-            message.style.color = "red";
-            message.textContent =
-                "Please verify OTP before login.";
-
-            return;
-        }
-
-        // USER LOGIN
-
-        loginButton.disabled = true;
-        loginButton.textContent = "Logging in...";
-
-        try {
-
-            const response = await fetch(
-                "http://localhost:5000/api/login",
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        email: email,
-                        password: password
-                    })
-                }
-            );
-
-            const data = await response.json();
-
-            if (response.ok) {
-
-                if (data.user) {
-
-                    localStorage.setItem(
-                        "loggedInUser",
-                        JSON.stringify(data.user)
-                    );
-
-                }
-
-                message.style.color = "green";
-                message.textContent =
-                    "User Login Successful!";
-
-                setTimeout(function() {
-
-                    window.location.href =
-                        "user-dashboard.html";
-
-                }, 1000);
-
-            } else {
-
-                message.style.color = "red";
-                message.textContent =
-                    data.message ||
-                    "Invalid email or password.";
-
-                loginButton.disabled = false;
-                loginButton.textContent = "Login";
-
-            }
-
-        } catch (error) {
-
-            console.error("Login Error:", error);
-
-            message.style.color = "red";
-            message.textContent =
-                "Unable to connect to server.";
-
-            loginButton.disabled = false;
-            loginButton.textContent = "Login";
-
-        }
-
-    }
-);
-
-</script>
-
+      } catch (error) {
+        showMessage("resetMessage", error.message);
+      } finally {
+        setBusy("resetPasswordBtn", false);
+      }
+    });
+  </script>
 </body>
 </html>
